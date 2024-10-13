@@ -1,0 +1,51 @@
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+        vector<int>v;
+        
+        for(int i=0;i<flowerbed.size();i++)
+        {
+            if(flowerbed[i]==1)
+            {
+                v.push_back(i+1);
+            }
+        }
+        if(v.size()==0)
+        {
+            if(((flowerbed.size()+1)/2)>=n)
+            {
+                 return true;
+            }
+            else
+            {
+                  return false;
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<v.size()-1;i++)
+        {
+            int dis=(v[i+1]-v[i])-1;//count how many zeros are between two one.
+            if(dis>=3)
+            {
+                dis=dis-2;
+                dis++;
+                cnt+=(dis/2);
+            }
+
+        }
+        int dis=v[0]-1;
+        cnt+=(dis/2);
+        dis=(flowerbed.size())-(v.back());
+        cnt+=(dis/2);
+        if(cnt>=n)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        
+    }
+};
