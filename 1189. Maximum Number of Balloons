@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        map<char,int>mp;
+        for(int i=0;i<text.size();i++)
+        {
+            mp[text[i]]++;
+        }
+        string s="balloon";
+        int ans=100000;
+         for(int i=0;i<7;i++)
+         {
+            int x=mp[s[i]];
+            if(s[i]=='l' or s[i]=='o')
+            {
+                x=x/2;
+            }
+
+            ans=min(ans,x);
+         }
+         
+         return ans;
+    }
+};
