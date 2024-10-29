@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        map<int,vector<int>>mp;
+        mp[0]={1};
+        mp[1]={1,1};
+        for(int i=2;i<=33;i++)
+        {
+            mp[i].push_back(1);
+            for(int j=0;j<mp[i-1].size()-1;j++)
+            {
+                mp[i].push_back(mp[i-1][j]+mp[i-1][j+1]);
+            }
+            mp[i].push_back(1);
+        }
+        return mp[rowIndex];
+    }
+};
