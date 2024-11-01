@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string largestGoodInteger(string num) {
+        map<int,string>mp;
+        for(int i=1;i<num.size()-1;i++)
+        {
+            if(num[i]==num[i-1] and num[i]==num[i+1])
+            {
+                int x=num[i]-'0';
+                string s="";
+                s.push_back(num[i]);
+                s.push_back(num[i+1]);
+                s.push_back(num[i-1]);
+                mp[x]=s;
+            }
+        }
+        string st="";
+        for(int i=9;i>=0;i--)
+        {
+            if(mp[i]!="")
+            {
+                st=mp[i];
+                break;
+            }
+        }
+        return st;
+        
+    }
+};
