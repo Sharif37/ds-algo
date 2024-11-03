@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int maxScore(string s) {
+
+        int zero[s.size()];
+        int one[s.size()];
+
+        int cnt=0; 
+
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='0')
+            {
+                cnt++;
+            }
+            zero[i]=cnt;
+        }
+        cnt=0;
+        for(int i=s.size()-1;i>=0;i--)
+        {
+            one[i]=cnt;
+            if(s[i]=='1')
+            {
+                cnt++;
+            }
+        }
+        int ans=0;
+        for(int i=0;i<s.size()-1;i++)
+        {
+            int tm=zero[i]+one[i];
+            ans=max(ans,tm);
+
+        }
+        return ans;
+    }
+};
