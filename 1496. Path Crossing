@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+
+       map<pair<int,int>,bool>visited;
+       int x=0,y=0;
+       for(auto c: path)
+       {
+        visited[{x,y}]=true;
+
+        if(c=='N') y++;
+        else if(c=='S') y--;
+        else if(c=='E') x++;
+        else x--;
+
+        if(visited[{x,y}]) return true;
+       }
+       return false;
+        
+    }
+};
